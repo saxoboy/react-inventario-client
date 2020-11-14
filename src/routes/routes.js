@@ -1,20 +1,20 @@
 // Layouts
-import LayoutBasic from "../layouts/LayoutBasic";
+import LayoutBasic from "../layouts/Layout";
 
 // Pages
-import Home from "../pages/Home";
+import Dashboard from "../pages/Dashboard";
 import User from "../pages/User";
-import Error404 from "../pages/Error404";
+import Error404 from "../pages/404";
 
 const routes = [
   {
     path: "/",
     layout: LayoutBasic,
-    component: Home,
+    component: Dashboard,
     exact: true,
   },
   {
-    path: "/:username",
+    path: "/user/:username",
     layout: LayoutBasic,
     component: User,
     exact: true,

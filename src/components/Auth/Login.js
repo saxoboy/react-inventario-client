@@ -13,7 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 /* APOLLO */
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../graphql/users";
-import { setToken } from "../../utils/token";
+import { setToken, decodeToken } from "../../utils/token";
 import useAuth from "../../hooks/useAuth";
 
 // validamos forms
@@ -61,7 +61,7 @@ const Login = () => {
         setIsOk(ok);
         setError(message);
         setToken(token);
-        setUser(token)
+        setUser(decodeToken(token))
       } else {
         setOpen(true);
         setIsOk(ok);

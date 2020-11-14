@@ -19,3 +19,19 @@ export const LOGIN = gql`
     }
   }
 `;
+
+export const USER_GET = gql`
+  query getUser($username: String) {
+    getUser(username: $username) {
+      id
+      name
+      username
+      email
+      photo
+      updateAt
+      createAt
+      lastLogin
+      status
+    }
+  }
+`;

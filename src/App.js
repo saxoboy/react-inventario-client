@@ -5,9 +5,10 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { ApolloProvider } from "@apollo/client";
 import client from "./config/apollo";
 import Auth from "./pages/auth";
+import Navigation from "./routes/Navigation"
 import AuthContext from "./context/AuthContext";
-import { getToken } from "./utils/token";
-import NavBar from "./components/NavBar";
+import { getToken, decodeToken } from "./utils/token";
+
 
 function App() {
   const [auth, setAuth] = useState(undefined);
@@ -16,7 +17,7 @@ function App() {
     if (!token) {
       setAuth(null);
     } else {
-      setAuth(token);
+      setAuth(decodeToken(token));
     }
   }, []);
 
@@ -36,13 +37,14 @@ function App() {
     }),
     [auth]
   );
-  console.log(auth)
+
+  if(auth === undefined) return null // para evitar flash login
   return (
     <ThemeProvider theme={theme}>
       <ApolloProvider client={client}>
         <AuthContext.Provider value={authData}>
           <CssBaseline />
-          {!auth ? <Auth /> : <NavBar />}
+          {!auth ? <Auth /> : <Navigation /> }
         </AuthContext.Provider>
       </ApolloProvider>
     </ThemeProvider>
