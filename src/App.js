@@ -9,7 +9,6 @@ import Navigation from "./routes/Navigation"
 import AuthContext from "./context/AuthContext";
 import { getToken, decodeToken } from "./utils/token";
 
-
 function App() {
   const [auth, setAuth] = useState(undefined);
   useEffect(() => {

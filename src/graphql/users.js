@@ -35,3 +35,12 @@ export const USER_GET = gql`
     }
   }
 `;
+
+export const USER_UPDATE_AVATAR = gql`
+  mutation updateUserAvatar($file: Upload) {
+    updateUserAvatar(file: $file) {
+      status
+      urlAvatar
+    }
+  }
+`;
